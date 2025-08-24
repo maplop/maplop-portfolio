@@ -5,6 +5,8 @@ import { Download, Mail, Github, Linkedin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/language-context"
 import { dictionaries } from "@/lib/dictionaries"
+import { SiWhatsapp, SiLinkedin, SiGithub } from "react-icons/si"
+
 
 export function HeroSection() {
   const { language } = useLanguage()
@@ -36,20 +38,28 @@ export function HeroSection() {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button size="lg" className="gap-2 bg-orange-500 hover:bg-orange-600">
-                <Download className="w-4 h-4" />
-                {dict.hero.downloadCV}
-              </Button>
-              <Button variant="outline" size="lg" className="gap-2">
-                <Mail className="w-4 h-4" />
-                {dict.hero.contactMe}
-              </Button>
+              <a href="/CV-Manuel-A-Prieto.pdf" download>
+                <Button variant="outline" size="lg" className="gap-2">
+                  <Download className="w-4 h-4" />
+                  {dict.hero.downloadCV}
+                </Button>
+              </a>
+              <a
+                href="https://wa.me/5354564407?text=%C2%A1Hola!%20Me%20gust%C3%B3%20tu%20trabajo%20y%20quisiera%20contratar%20tus%20servicios.%20%C2%BFPodemos%20coordinar%20para%20hablar%20al%20respecto%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg" className="gap-2  bg-orange-500 hover:bg-orange-600">
+                  <SiWhatsapp className="w-4 h-4" />
+                  {dict.hero.contactMe}
+                </Button>
+              </a>
             </div>
 
             {/* Social Media Links */}
             <div className="flex gap-4">
               <a
-                href="https://github.com/yourusername"
+                href="https://github.com/maplop"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-muted hover:bg-muted/80 text-foreground p-3 rounded-full transition-colors"
@@ -58,7 +68,7 @@ export function HeroSection() {
                 <Github className="w-6 h-6" />
               </a>
               <a
-                href="https://linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/maplop"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-muted hover:bg-muted/80 text-foreground p-3 rounded-full transition-colors"
