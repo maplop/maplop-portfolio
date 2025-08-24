@@ -16,8 +16,11 @@ export const dictionaries = {
     },
     about: {
       title: "Sobre mí",
-      description:
-        "Soy un desarrollador frontend apasionado con más de 3 años de experiencia creando aplicaciones web modernas. Me especializo en React, Next.js y TypeScript, siempre buscando las mejores prácticas y las últimas tecnologías.",
+      description: `Inicié mi carrera profesional en el área de sistemas, donde adquirí experiencia en redes, ciberseguridad e infraestructura tecnológica. Esa etapa me permitió construir una base sólida en la gestión de entornos críticos y en la resolución de problemas técnicos.
+
+Con el tiempo descubrí mi verdadera pasión en el desarrollo web, especialmente en el frontend. En este campo encontré el equilibrio perfecto entre la precisión técnica y la creatividad, transformando diseños en interfaces claras, funcionales y centradas en la experiencia del usuario.
+
+A lo largo de mi trayectoria he trabajado con tecnologías como HTML, CSS, JavaScript y TypeScript, así como con frameworks y librerías modernas como React, Next.js y Astro. Actualmente busco oportunidades que me permitan seguir creciendo como profesional y aportar soluciones innovadoras y de calidad.`,
       experience: "Años de experiencia",
       projects: "Proyectos completados",
       clients: "Clientes satisfechos",
@@ -83,12 +86,16 @@ export const dictionaries = {
     },
     about: {
       title: "About Me",
-      description:
-        "I'm a passionate frontend developer with over 3 years of experience creating modern web applications. I specialize in React, Next.js, and TypeScript, always aiming for best practices and the latest technologies.",
+      description: `I began my professional career in the systems field, where I gained experience in networking, cybersecurity, and technological infrastructure. That period allowed me to build a solid foundation in managing critical environments and solving technical challenges.
+
+Over time, I discovered my true passion in web development, particularly in frontend. In this area, I found the perfect balance between technical precision and creativity, turning designs into clear, functional, and user-centered interfaces.
+
+Throughout my journey, I have worked with technologies such as HTML, CSS, JavaScript, and TypeScript, as well as modern frameworks and libraries like React, Next.js, and Astro. I am currently seeking opportunities that allow me to continue growing as a professional and contribute with innovative and high-quality solutions.`,
       experience: "Years of Experience",
       projects: "Completed Projects",
       clients: "Satisfied Clients",
     },
+
     skills: {
       title: "Technical Skills",
       description:

@@ -12,50 +12,109 @@ export function HeroSection() {
 
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto text-center">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-          <p className="text-lg text-muted-foreground mb-4">{dict.hero.greeting}</p>
-          <h1 className="text-4xl sm:text-6xl font-bold mb-6">
-            <span className="text-foreground bg-clip-text">
-              Manuel A Prieto
-            </span>
-          </h1>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-foreground mb-6">{dict.hero.title}</h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">{dict.hero.description}</p>
+      <div className="max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left side - Text content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-left"
+          >
+            <p className="text-lg text-muted-foreground mb-4">{dict.hero.greeting}</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+              <span className="text-foreground bg-clip-text">
+                Manuel A Prieto
+              </span>
+            </h1>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-orange-500 text-foreground mb-6">
+              {dict.hero.title}
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-xl">
+              {dict.hero.description}
+            </p>
 
-          {/* Social Media Links */}
-          <div className="flex justify-center mb-8 gap-4">
-            <a
-              href="https://github.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-muted hover:bg-muted/80 text-foreground p-3 rounded-full transition-colors"
-              aria-label="GitHub Profile"
-            >
-              <Github className="w-6 h-6" />
-            </a>
-            <a
-              href="https://linkedin.com/in/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-muted hover:bg-muted/80 text-foreground p-3 rounded-full transition-colors"
-              aria-label="LinkedIn Profile"
-            >
-              <Linkedin className="w-6 h-6" />
-            </a>
-          </div>
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <Button size="lg" className="gap-2 bg-orange-500 hover:bg-orange-600">
+                <Download className="w-4 h-4" />
+                {dict.hero.downloadCV}
+              </Button>
+              <Button variant="outline" size="lg" className="gap-2">
+                <Mail className="w-4 h-4" />
+                {dict.hero.contactMe}
+              </Button>
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="gap-2">
-              <Download className="w-4 h-4" />
-              {dict.hero.downloadCV}
-            </Button>
-            <Button variant="outline" size="lg" className="gap-2">
-              <Mail className="w-4 h-4" />
-              {dict.hero.contactMe}
-            </Button>
-          </div>
-        </motion.div>
+            {/* Social Media Links */}
+            <div className="flex gap-4">
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-muted hover:bg-muted/80 text-foreground p-3 rounded-full transition-colors"
+                aria-label="GitHub Profile"
+              >
+                <Github className="w-6 h-6" />
+              </a>
+              <a
+                href="https://linkedin.com/in/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-muted hover:bg-muted/80 text-foreground p-3 rounded-full transition-colors"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin className="w-6 h-6" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right side - Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="relative flex justify-center lg:justify-end"
+          >
+            <div className="relative">
+              {/* Background decorative elements */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full opacity-20 blur-2xl"></div>
+              <div className="absolute top-4 right-4 w-32 h-32 bg-orange-400 rounded-full opacity-30"></div>
+              <div className="absolute bottom-4 left-4 w-24 h-24 bg-orange-300 rounded-full opacity-20"></div>
+
+              {/* Main image container */}
+              <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden bg-gradient-to-br from-orange-400 to-orange-500 p-1">
+                <div className="w-full h-full rounded-full overflow-hidden bg-white">
+                  <img
+                    src="/profile.png" // Replace with your actual image path
+                    alt="Manuel A Prieto - UI/UX Designer & Front-End Developer"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Decorative geometric elements */}
+              <div className="absolute -top-8 -right-8 w-16 h-16 border-4 border-orange-400 rotate-45 opacity-60"></div>
+              <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-orange-400 rotate-12 opacity-40"></div>
+
+              {/* Floating elements */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ repeat: Infinity, duration: 3 }}
+                className="absolute top-16 -left-8 w-8 h-8"
+              >
+                <div className="w-full h-full bg-orange-300 rotate-45 opacity-50"></div>
+              </motion.div>
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 2.5, delay: 1 }}
+                className="absolute bottom-20 -right-12 w-6 h-6"
+              >
+                <div className="w-full h-full bg-orange-400 rounded-full opacity-60"></div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )
