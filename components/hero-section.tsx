@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Download, Mail, Github, Linkedin } from "lucide-react"
+import { Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/language-context"
 import { dictionaries } from "@/lib/dictionaries"
@@ -65,7 +65,7 @@ export function HeroSection() {
                 className="bg-muted hover:bg-muted/80 text-foreground p-3 rounded-full transition-colors"
                 aria-label="GitHub Profile"
               >
-                <Github className="w-6 h-6" />
+                <SiGithub className="w-6 h-6" />
               </a>
               <a
                 href="https://www.linkedin.com/in/maplop"
@@ -74,7 +74,7 @@ export function HeroSection() {
                 className="bg-muted hover:bg-muted/80 text-foreground p-3 rounded-full transition-colors"
                 aria-label="LinkedIn Profile"
               >
-                <Linkedin className="w-6 h-6" />
+                <SiLinkedin className="w-6 h-6" />
               </a>
             </div>
           </motion.div>
