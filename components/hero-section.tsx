@@ -37,7 +37,7 @@ export function HeroSection() {
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex  gap-4 mb-8">
               <a href="/CV-Manuel-A-Prieto.pdf" download>
                 <Button variant="outline" size="lg" className="gap-2">
                   <Download className="w-4 h-4" />
