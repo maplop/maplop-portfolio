@@ -104,21 +104,21 @@ export function HeroSection() {
               </div>
 
               {/* Decorative geometric elements */}
-              <div className="absolute -top-8 -right-8 w-16 h-16 border-4 border-orange-400 rotate-45 opacity-60"></div>
-              <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-orange-400 rotate-12 opacity-40"></div>
+              <div className="absolute -top-8 -right-2 sm:-right-8 w-16 h-16 border-4 border-orange-400 rotate-45 opacity-60"></div>
+              <div className="absolute -bottom-6 -left-2 sm:-left-6 w-12 h-12 bg-orange-400 rotate-12 opacity-40"></div>
 
               {/* Floating elements */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 3 }}
-                className="absolute top-16 -left-8 w-8 h-8"
+                className="absolute top-16 -left-2 sm:-left-8 w-8 h-8"
               >
                 <div className="w-full h-full bg-orange-300 rotate-45 opacity-50"></div>
               </motion.div>
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ repeat: Infinity, duration: 2.5, delay: 1 }}
-                className="absolute bottom-20 -right-12 w-6 h-6"
+                className="absolute bottom-20 -right-4 sm:-right-12 w-6 h-6"
               >
                 <div className="w-full h-full bg-orange-400 rounded-full opacity-60"></div>
               </motion.div>

@@ -1,43 +1,25 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { useLanguage } from "@/contexts/language-context"
 import { dictionaries } from "@/lib/dictionaries"
+import { projects } from "@/data/projects"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation, Autoplay } from 'swiper/modules';
+import { useRef } from "react"
 
 export function ProjectsSection() {
   const { language } = useLanguage()
   const dict = dictionaries[language]
 
-  const projects = [
-    {
-      title: dict.projects.project1.title,
-      description: dict.projects.project1.description,
-      image: "/placeholder.svg?height=200&width=400",
-      technologies: ["React", "Next.js", "Stripe", "Tailwind"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: dict.projects.project2.title,
-      description: dict.projects.project2.description,
-      image: "/placeholder.svg?height=200&width=400",
-      technologies: ["React", "TypeScript", "Socket.io", "Node.js"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: dict.projects.project3.title,
-      description: dict.projects.project3.description,
-      image: "/placeholder.svg?height=200&width=400",
-      technologies: ["Next.js", "Framer Motion", "Tailwind", "MDX"],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-  ]
+  const prevRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -53,54 +35,100 @@ export function ProjectsSection() {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{dict.projects.description}</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech) => (
-                      <Badge key={tech} variant="secondary">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                  <div className="flex gap-2">
-                    <Button size="sm" className="flex-1 bg-orange-500 hover:bg-orange-600" asChild>
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        {dict.projects.viewProject}
-                      </a>
-                    </Button>
-                    <Button size="sm" variant="outline" asChild>
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4" />
-                      </a>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+        <div className="relative">
+          <Swiper
+            spaceBetween={30}
+            loop={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[Navigation, Autoplay]}
+            className="mySwiper"
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            navigation={{
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
+            }}
+            onBeforeInit={(swiper) => {
+              if (typeof swiper.params.navigation !== "boolean" && swiper.params.navigation) {
+                swiper.params.navigation.prevEl = prevRef.current;
+                swiper.params.navigation.nextEl = nextRef.current;
+              }
+            }}
+          >
+            {projects.map((project, index) => (
+              <SwiperSlide key={index}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={project.images[0] || "/placeholder.svg"}
+                        alt={project.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <CardHeader>
+                      <CardTitle className="text-xl">{project.title}</CardTitle>
+                      <CardDescription>{project.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.map((tech) => (
+                          <Badge key={tech} variant="secondary">
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                      <div className="flex gap-2">
+                        <Button size="sm" className="flex-1 bg-orange-500 hover:bg-orange-600" asChild>
+                          <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            {dict.projects.viewProject}
+                          </a>
+                        </Button>
+                        <Button size="sm" variant="outline" asChild>
+                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                            <Github className="w-4 h-4" />
+                          </a>
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <button
+            ref={prevRef}
+            className="absolute left-[-10px] sm:left-[-15px] top-1/2 -translate-y-1/2 p-1 z-10 rounded-full transition
+              bg-gray-200 text-black
+    hover:bg-orange-500 hover:text-white 
+             dark:bg-gray-800 dark:text-white dark:hover:bg-orange-500"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            ref={nextRef}
+            className="absolute right-[-10px] sm:right-[-15px] top-1/2 -translate-y-1/2 p-1 z-10 rounded-full transition
+             bg-gray-200 text-black 
+    hover:bg-orange-500 hover:text-white 
+            dark:bg-gray-800 dark:text-white dark:hover:bg-orange-500"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
         </div>
       </div>
-    </section>
+    </section >
   )
 }
