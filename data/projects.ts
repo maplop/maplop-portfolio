@@ -9,22 +9,30 @@ export type ProjectType = {
 
 export const projects: ProjectType[] = [
   {
-    images: ["/projects/portfolio-1.png", "/projects/portfolio-2.png"],
-    title: "Personal Portfolio",
+    images: [
+      "/projects/squarity/squarity-1.png",
+      "/projects/squarity/squarity-2.png",
+      "/projects/squarity/squarity-3.png",
+      "/projects/squarity/squarity-4.png",
+      "/projects/squarity/squarity-5.png",
+      "/projects/squarity/squarity-6.png",
+      "/projects/squarity/squarity-7.png",
+    ],
+    title: "Squarity",
     description:
-      "A responsive personal portfolio website built to showcase projects, skills, and experience.",
-    technologies: ["Next.js", "Tailwind CSS", "TypeScript"],
-    projectUrl: "https://myportfolio.com",
-    githubUrl: "https://github.com/usertitle/portfolio",
+      "Un ecosistema en crecimiento de herramientas NFT para creadores, coleccionistas y comerciantes.",
+    technologies: ["Next.js", "Material UI", "TypeScript"],
+    projectUrl: "https://www.squarity.app",
+    githubUrl: undefined,
   },
   {
     images: ["/projects/ecommerce-1.png"],
-    title: "E-commerce Store",
+    title: "Telosians Club",
     description:
-      "Full-stack e-commerce application with shopping cart, checkout process, and admin dashboard.",
-    technologies: ["React", "Node.js", "Express", "MongoDB"],
-    projectUrl: "https://myecommerce.com",
-    githubUrl: "https://github.com/usertitle/ecommerce",
+      "Plataforma creativa enfocada en mostrar y dar vida a los Telosians dentro del ecosistema Telos.",
+    technologies: ["Next.js", "Material UI", "TypeScript"],
+    projectUrl: "https://telosians.club",
+    githubUrl: undefined,
   },
   {
     images: ["/projects/chatapp-1.png", "/projects/chatapp-2.png"],
@@ -32,8 +40,8 @@ export const projects: ProjectType[] = [
     description:
       "Real-time chat application with authentication, chat rooms, and message persistence.",
     technologies: ["Next.js", "Socket.io", "Firebase"],
-    projectUrl: "https://mychatapp.com",
-    githubUrl: "https://github.com/usertitle/chat-app",
+    projectUrl: "https://staking-club.vercel.app",
+    githubUrl: undefined,
   },
   {
     images: ["/projects/dashboard.png"],
