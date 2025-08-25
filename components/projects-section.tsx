@@ -11,7 +11,8 @@ import { projects } from "@/data/projects"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation, Autoplay } from 'swiper/modules';
+import 'swiper/css/pagination';
+import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { useRef } from "react"
 
 export function ProjectsSection() {
@@ -42,6 +43,7 @@ export function ProjectsSection() {
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
+              pauseOnMouseEnter: true,
             }}
             modules={[Navigation, Autoplay]}
             className="mySwiper"
@@ -71,11 +73,22 @@ export function ProjectsSection() {
                 >
                   <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
                     <div className="aspect-video overflow-hidden">
-                      <img
-                        src={project.images[0] || "/placeholder.svg"}
-                        alt={project.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
+                      <Swiper
+                        pagination={{ clickable: true }}
+                        loop={true}
+                        modules={[Pagination]}
+                        className="mySwiper"
+                      >
+                        {project.images.map((img, index) => (
+                          <SwiperSlide key={index}>
+                            <img
+                              src={img || "/placeholder.svg"}
+                              alt={`${project.title}-${index}`}
+                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            />
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
                     </div>
                     <CardHeader>
                       <CardTitle className="text-xl">{project.title}</CardTitle>
@@ -96,11 +109,13 @@ export function ProjectsSection() {
                             {dict.projects.viewProject}
                           </a>
                         </Button>
-                        <Button size="sm" variant="outline" asChild>
-                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                            <Github className="w-4 h-4" />
-                          </a>
-                        </Button>
+                        {project.githubUrl && (
+                          <Button size="sm" variant="outline" asChild>
+                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                              <Github className="w-4 h-4" />
+                            </a>
+                          </Button>
+                        )}
                       </div>
                     </CardContent>
                   </Card>
@@ -110,7 +125,7 @@ export function ProjectsSection() {
           </Swiper>
           <button
             ref={prevRef}
-            className="absolute left-[-10px] sm:left-[-15px] top-1/2 -translate-y-1/2 p-1 z-10 rounded-full transition
+            className="absolute left-[-10px] sm:left-[-15px] top-1/2 translate-y-1/2 p-1 z-10 rounded-full transition
               bg-gray-200 text-black
     hover:bg-orange-500 hover:text-white 
              dark:bg-gray-800 dark:text-white dark:hover:bg-orange-500"
@@ -120,7 +135,7 @@ export function ProjectsSection() {
 
           <button
             ref={nextRef}
-            className="absolute right-[-10px] sm:right-[-15px] top-1/2 -translate-y-1/2 p-1 z-10 rounded-full transition
+            className="absolute right-[-10px] sm:right-[-15px] top-1/2 translate-y-1/2 p-1 z-10 rounded-full transition
              bg-gray-200 text-black 
     hover:bg-orange-500 hover:text-white 
             dark:bg-gray-800 dark:text-white dark:hover:bg-orange-500"
