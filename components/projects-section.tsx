@@ -13,7 +13,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ProjectCategory } from "@/data/projects"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip"
 
@@ -24,6 +24,18 @@ export function ProjectsSection() {
 
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
+
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
 
 
   const getCategoryIcon = (category: ProjectCategory) => {
@@ -82,11 +94,15 @@ export function ProjectsSection() {
           <Swiper
             spaceBetween={30}
             loop={true}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
+            autoplay={
+              isMobile
+                ? false
+                : {
+                  delay: 2500,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }
+            }
             modules={[Navigation, Autoplay]}
             className="mySwiper"
             breakpoints={{
