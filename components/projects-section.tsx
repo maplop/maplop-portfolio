@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react"
+import { ExternalLink, Github, ChevronLeft, ChevronRight, Dumbbell, BriefcaseBusiness, FileJson2 } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -14,6 +14,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { useRef } from "react"
+import { ProjectCategory } from "@/data/projects"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip"
+
 
 export function ProjectsSection() {
   const { language } = useLanguage()
@@ -21,6 +24,45 @@ export function ProjectsSection() {
 
   const prevRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
+
+
+  const getCategoryIcon = (category: ProjectCategory) => {
+    let IconComponent
+    let label
+    let colorClass
+
+    switch (category) {
+      case "real":
+        IconComponent = BriefcaseBusiness
+        label = "Trabajo"
+        colorClass = "text-blue-500" // color para real
+        break
+      case "practice":
+        IconComponent = Dumbbell
+        label = "Práctica"
+        colorClass = "text-red-500" // color para práctica
+        break
+      case "exam":
+        IconComponent = FileJson2
+        label = "Prueba técnica"
+        colorClass = "text-green-500" // color para examen
+        break
+      default:
+        return null
+    }
+
+    return (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <IconComponent className={`w-5 h-5 cursor-pointer ${colorClass}`} />
+          </TooltipTrigger>
+          <TooltipContent side="top">{label}</TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    )
+  }
+
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
@@ -91,7 +133,10 @@ export function ProjectsSection() {
                       </Swiper>
                     </div>
                     <CardHeader>
-                      <CardTitle className="text-xl">{project.title}</CardTitle>
+                      <div className="flex justify-between items-center">
+                        <CardTitle className="text-xl">{project.title}</CardTitle>
+                        {getCategoryIcon(project.category)}
+                      </div>
                       <CardDescription>{project.description}</CardDescription>
                     </CardHeader>
                     <CardContent>
