@@ -15,7 +15,7 @@ export function Footer() {
           <p className="flex items-center justify-center gap-1">
             {dict.footer.madeWith} <Heart className="w-4 h-4 text-red-500 fill-current" /> {dict.footer.and} Next.js
           </p>
-          <p className="mt-2">© 2024 Alex Rodriguez. {dict.footer.rights}</p>
+          <p className="mt-2">© 2025 Manuel Prieto. {dict.footer.rights}</p>
         </div>
       </div>
     </footer>

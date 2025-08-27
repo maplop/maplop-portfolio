@@ -164,7 +164,7 @@ export function ProjectsSection() {
                         ))}
                       </div>
                       <div className="flex gap-2">
-                        <Button size="sm" className="flex-1 bg-orange-500 hover:bg-orange-600" asChild>
+                        <Button disabled size="sm" className="flex-1 bg-orange-500 hover:bg-orange-600" asChild>
                           <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
                             <ExternalLink className="w-4 h-4 mr-2" />
                             {dict.projects.viewProject}

@@ -17,19 +17,19 @@ export function ContactSection() {
     {
       icon: Mail,
       label: "Email",
-      value: "alex@example.com",
-      href: "mailto:alex@example.com",
+      value: "manuelalejandro9604@gmail.com",
+      href: "mailto:manuelalejandro9604@gmail.com",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+53 54564407",
+      href: "tel:+5354564407",
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "Madrid, España",
+      value: "Santa Clara, Cuba",
       href: "#",
     },
   ]
@@ -59,8 +59,8 @@ export function ContactSection() {
               {contactInfo.map((info, index) => (
                 <div key={index} className="flex items-center space-x-4">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <info.icon className="w-6 h-6 text-primary" />
+                    <div className="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center">
+                      <info.icon className="w-6 h-6 text-orange-500" />
                     </div>
                   </div>
                   <div>
@@ -85,19 +85,25 @@ export function ContactSection() {
                 <CardTitle>{dict.contact.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-4">
+                {/* Aquí está el cambio con mailto */}
+                <form
+                  className="space-y-4"
+                  action="mailto:manuelalejandro9604@gmail.com"
+                  method="POST"
+                  encType="text/plain"
+                >
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <Input placeholder={dict.contact.namePlaceholder} required />
+                      <Input name="name" placeholder={dict.contact.namePlaceholder} required />
                     </div>
                     <div>
-                      <Input type="email" placeholder={dict.contact.emailPlaceholder} required />
+                      <Input type="email" name="email" placeholder={dict.contact.emailPlaceholder} required />
                     </div>
                   </div>
                   <div>
-                    <Textarea placeholder={dict.contact.messagePlaceholder} rows={5} required />
+                    <Textarea name="message" placeholder={dict.contact.messagePlaceholder} rows={5} required />
                   </div>
-                  <Button type="submit" className="w-full">
+                  <Button type="submit" className="w-full bg-orange-500 hover:bg-orange-600">
                     <Send className="w-4 h-4 mr-2" />
                     {dict.contact.send}
                   </Button>
