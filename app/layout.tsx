@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Manuel Prieto | Portfolio',
+  title: 'Desarrollador Frontend | Ingeniero Informático',
   description: 'Portafolio de Manuel Prieto: desarrollador frontend especializado en React, Next.js y Tailwind CSS.',
   generator: 'v0.dev',
   authors: [{ name: 'Manuel Prieto', url: 'https://maplop-portfolio.vercel.app' }],
   keywords: ['portfolio', 'React', 'Next.js', 'Tailwind CSS', 'developer', 'frontend'],
   openGraph: {
-    title: 'Manuel Prieto | Portfolio',
+    title: 'Desarrollador Frontend | Ingeniero Informático',
     description: 'Portafolio de Manuel Prieto: desarrollador frontend especializado en React, Next.js y Tailwind CSS.',
     url: 'https://maplop-portfolio.vercel.app',
     siteName: 'Manuel Prieto Portfolio',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Manuel Prieto | Portfolio',
+    title: 'Desarrollador Frontend | Ingeniero Informático',
     description: 'Portafolio de Manuel Prieto: desarrollador frontend especializado en React, Next.js y Tailwind CSS.',
     images: ['/og-image.png'],
   },
@@ -38,7 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body>{children}</body>
+      <body>
+        {children}
+      </body>
     </html>
   )
 }
