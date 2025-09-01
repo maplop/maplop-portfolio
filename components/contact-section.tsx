@@ -16,19 +16,19 @@ export function ContactSection() {
   const contactInfo = [
     {
       icon: Mail,
-      label: "Email",
+      label: language === "es" ? "Correo" : "Email",
       value: "manuelalejandro9604@gmail.com",
       href: "mailto:manuelalejandro9604@gmail.com",
     },
     {
       icon: Phone,
-      label: "Phone",
+      label: language === "es" ? "Teléfono" : "Phone",
       value: "+53 54564407",
       href: "tel:+5354564407",
     },
     {
       icon: MapPin,
-      label: "Location",
+      label: language === "es" ? "Ubicación" : "Location",
       value: "Santa Clara, Cuba",
       href: "#",
     },
@@ -65,7 +65,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <p className="font-medium">{info.label}</p>
-                    <a href={info.href} className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href={info.href} className="text-muted-foreground hover:text-orange-500 transition-colors">
                       {info.value}
                     </a>
                   </div>

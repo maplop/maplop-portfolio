@@ -2,8 +2,14 @@ export type ProjectCategory = "real" | "practice" | "exam";
 
 export type ProjectType = {
   images: Array<string>;
-  title: string;
-  description: string;
+  title: {
+    es: string;
+    en: string;
+  };
+  description: {
+    es: string;
+    en: string;
+  };
   category: ProjectCategory;
   technologies: Array<string>;
   projectUrl?: string;
@@ -23,13 +29,17 @@ export const projects: ProjectType[] = [
       "/projects/squarity/squarity-8.png",
       "/projects/squarity/squarity-9.png",
     ],
-    title: "Squarity",
-    description:
-      "Un ecosistema en crecimiento de herramientas NFT para creadores, coleccionistas y comerciantes.",
+    title: {
+      es: "Squarity",
+      en: "Squarity",
+    },
+    description: {
+      es: "Un ecosistema en crecimiento de herramientas NFT para creadores, coleccionistas y comerciantes.",
+      en: "A growing ecosystem of NFT tools for creators, collectors, and traders.",
+    },
     category: "real",
     technologies: ["Next.js", "Material UI", "TypeScript"],
     projectUrl: "https://www.squarity.app",
-    githubUrl: undefined,
   },
   {
     images: [
@@ -40,13 +50,17 @@ export const projects: ProjectType[] = [
       "/projects/telosians/telosians-5.png",
       "/projects/telosians/telosians-6.png",
     ],
-    title: "Telosians Club",
-    description:
-      "Plataforma creativa enfocada en mostrar y dar vida a los Telosians dentro del ecosistema Telos.",
+    title: {
+      es: "Telosians Club",
+      en: "Telosians Club",
+    },
+    description: {
+      es: "Plataforma creativa enfocada en mostrar y dar vida a los Telosians dentro del ecosistema Telos.",
+      en: "Creative platform focused on showcasing and bringing the Telosians to life within the Telos ecosystem.",
+    },
     category: "real",
     technologies: ["Next.js", "Material UI", "TypeScript"],
     projectUrl: "https://telosians.club",
-    githubUrl: undefined,
   },
   {
     images: [
@@ -57,13 +71,17 @@ export const projects: ProjectType[] = [
       "/projects/staking-club/staking-club-5.png",
       "/projects/staking-club/staking-club-6.png",
     ],
-    title: "Staking Club",
-    description:
-      "Prototipo de plataforma web para conectar wallets y generar ingresos pasivos con NFTs.",
+    title: {
+      es: "Staking Club",
+      en: "Staking Club",
+    },
+    description: {
+      es: "Prototipo de plataforma web para conectar wallets y generar ingresos pasivos con NFTs.",
+      en: "Prototype of a web platform to connect wallets and generate passive income with NFTs.",
+    },
     category: "real",
     technologies: ["Next.js", "Material UI", "TypeScript"],
     projectUrl: "https://staking-club.vercel.app",
-    githubUrl: undefined,
   },
   {
     images: [
@@ -72,9 +90,14 @@ export const projects: ProjectType[] = [
       "/projects/poke-planet/poke-planet-3.png",
       "/projects/poke-planet/poke-planet-4.png",
     ],
-    title: "Poke Planet",
-    description:
-      "Poke Planet es una app interactiva que permite descubrir Pokémon, conocer sus características y guardar tus favoritos.",
+    title: {
+      es: "Poke Planet",
+      en: "Poke Planet",
+    },
+    description: {
+      es: "App interactiva que permite descubrir Pokémon, conocer sus características y guardar tus favoritos.",
+      en: "Interactive app that lets you discover Pokémon, explore their features, and save your favorites.",
+    },
     category: "practice",
     technologies: ["Astro", "Tailwind CSS", "TypeScript"],
     projectUrl: "https://poke-planet.netlify.app",
@@ -87,19 +110,29 @@ export const projects: ProjectType[] = [
       "/projects/voy-pa-ti-dashboard/voy-pa-ti-dashboard-3.png",
       "/projects/voy-pa-ti-dashboard/voy-pa-ti-dashboard-4.png",
     ],
-    title: "Dashboard VoyPaTi",
-    description:
-      "Desarrollo de pantallas de un dashboard como prueba técnica, demostrando maquetación, interacción y uso de React/Front-end moderno.",
+    title: {
+      es: "Dashboard VoyPaTi",
+      en: "VoyPaTi Dashboard",
+    },
+    description: {
+      es: "Desarrollo de pantallas de un dashboard como prueba técnica, demostrando maquetación, interacción y uso de React/Front-end moderno.",
+      en: "Development of dashboard screens as a technical test, showcasing layout, interaction, and use of modern React/Front-end.",
+    },
     category: "exam",
-    technologies: ["React", "Materia UI", "TypeScript"],
+    technologies: ["React", "Material UI", "TypeScript"],
     projectUrl: "https://nox-exam-voypati.vercel.app/dashboard",
     githubUrl: "https://github.com/maplop/nox-exam",
   },
   {
     images: ["/projects/pidra-papel-tijera/pidra-papel-tijera.png"],
-    title: "Piedra Papel Tijera",
-    description:
-      "Juego de práctica que permite al usuario jugar Piedra, Papel o Tijera, diseñado para mejorar habilidades en lógica y desarrollo web.",
+    title: {
+      es: "Piedra Papel Tijera",
+      en: "Rock Paper Scissors",
+    },
+    description: {
+      es: "Juego de práctica que permite al usuario jugar Piedra, Papel o Tijera, diseñado para mejorar habilidades en lógica y desarrollo web.",
+      en: "Practice game that allows users to play Rock, Paper, Scissors, designed to improve logic and web development skills.",
+    },
     category: "practice",
     technologies: ["React", "Tailwind CSS", "TypeScript"],
     projectUrl: "https://main--papel-piedra-tijera.netlify.app",
@@ -118,9 +151,14 @@ export const projects: ProjectType[] = [
       "/projects/notes-space/notes-space-9.png",
       "/projects/notes-space/notes-space-10.png",
     ],
-    title: "Notes Space",
-    description:
-      "Notes Space es una app práctica para crear, organizar y categorizar notas, con gestión de perfil incluida.",
+    title: {
+      es: "Notes Space",
+      en: "Notes Space",
+    },
+    description: {
+      es: "App práctica para crear, organizar y categorizar notas, con gestión de perfil incluida.",
+      en: "Practice app to create, organize, and categorize notes, including profile management.",
+    },
     category: "practice",
     technologies: ["React", "Material UI", "TypeScript"],
     projectUrl: "https://notes-space.netlify.app",
@@ -136,9 +174,14 @@ export const projects: ProjectType[] = [
       "/projects/landing-page-xml-download/landing-page-xml-download-6.png",
       "/projects/landing-page-xml-download/landing-page-xml-download-7.png",
     ],
-    title: "Landing Page XML Download",
-    description:
-      "Landing page de práctica donde trabajé maquetación, estilos y optimización visual para una experiencia de usuario fluida.",
+    title: {
+      es: "Landing Page XML Download",
+      en: "Landing Page XML Download",
+    },
+    description: {
+      es: "Landing page de práctica donde trabajé maquetación, estilos y optimización visual para una experiencia de usuario fluida.",
+      en: "Practice landing page where I worked on layout, styling, and visual optimization for a smooth user experience.",
+    },
     category: "exam",
     technologies: ["React", "Material UI", "JavaScript"],
     projectUrl: "https://landing-page-xml-download-cyan.vercel.app",
@@ -155,12 +198,16 @@ export const projects: ProjectType[] = [
       "/projects/art-bit-x/art-bit-x-7.png",
       "/projects/art-bit-x/art-bit-x-8.png",
     ],
-    title: "ArtBitX",
-    description:
-      "Simulación de un marketplace de NFTs con autenticación mediante wallet y gestión de colecciones usando Thirdweb (en dearrollo).",
+    title: {
+      es: "ArtBitX",
+      en: "ArtBitX",
+    },
+    description: {
+      es: "Simulación de un marketplace de NFTs con autenticación mediante wallet y gestión de colecciones usando Thirdweb (en desarrollo).",
+      en: "Simulation of an NFT marketplace with wallet authentication and collection management using Thirdweb (in development).",
+    },
     category: "practice",
     technologies: ["Nextjs", "Material UI", "TypeScript"],
-    projectUrl: undefined,
     githubUrl: "https://github.com/maplop/thirdweb-marketplace",
   },
 ];

@@ -42,7 +42,7 @@ export function Header() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-foreground hover:text-orange-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   {item.label}
                 </a>
@@ -84,7 +84,7 @@ export function Header() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                  className="text-foreground hover:text-orange-500 block px-3 py-2 rounded-md text-base font-medium transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}

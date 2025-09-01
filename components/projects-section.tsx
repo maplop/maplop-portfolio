@@ -150,10 +150,10 @@ export function ProjectsSection() {
                     </div>
                     <CardHeader>
                       <div className="flex justify-between items-center">
-                        <CardTitle className="text-xl">{project.title}</CardTitle>
+                        <CardTitle className="text-xl">{project.title[language]}</CardTitle>
                         {getCategoryIcon(project.category)}
                       </div>
-                      <CardDescription>{project.description}</CardDescription>
+                      <CardDescription>{project.description[language]}</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="flex flex-wrap gap-2 mb-4">

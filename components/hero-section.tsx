@@ -26,7 +26,7 @@ export function HeroSection() {
             <p className="text-lg text-muted-foreground mb-4">{dict.hero.greeting}</p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               <span className="text-foreground bg-clip-text">
-                Manuel A Prieto
+                Manuel Prieto
               </span>
             </h1>
             <h2 className="text-2xl sm:text-3xl font-semibold text-orange-500 text-foreground mb-6">
@@ -97,7 +97,7 @@ export function HeroSection() {
                 <div className="w-full h-full rounded-full overflow-hidden bg-white">
                   <img
                     src="/profile.png" // Replace with your actual image path
-                    alt="Manuel A Prieto - UI/UX Designer & Front-End Developer"
+                    alt="Manuel Prieto - UI/UX Designer & Front-End Developer"
                     className="w-full h-full object-cover"
                   />
                 </div>
