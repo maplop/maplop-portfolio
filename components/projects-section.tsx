@@ -140,7 +140,7 @@ export function ProjectsSection() {
                         {project.images.map((img, index) => (
                           <SwiperSlide key={index}>
                             <img
-                              src={img || "/placeholder.svg"}
+                              src={img || "/img-placeholder.png"}
                               alt={`${project.title}-${index}`}
                               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                             />

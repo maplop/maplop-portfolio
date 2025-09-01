@@ -13,7 +13,7 @@ export function HeroSection() {
   const dict = dictionaries[language]
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Text content */}
