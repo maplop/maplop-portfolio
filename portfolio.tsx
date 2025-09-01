@@ -12,7 +12,7 @@ import { Footer } from "@/components/footer"
 
 export default function Portfolio() {
   return (
-    <ThemeProvider defaultTheme="light">
+    <ThemeProvider defaultTheme="dark">
       <LanguageProvider defaultLanguage="es">
         <div className="min-h-screen bg-background text-foreground">
           <Header />
