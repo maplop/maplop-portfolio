@@ -130,12 +130,12 @@ export function ProjectsSection() {
                   viewport={{ once: true }}
                 >
                   <Card className="overflow-hidden hover:shadow-lg transition-shadow h-full">
-                    <div className="aspect-video overflow-hidden">
+                    <div className="aspect-video relative overflow-hidden">
                       <Swiper
                         pagination={{ clickable: true }}
                         loop={true}
                         modules={[Pagination]}
-                        className="mySwiper"
+                        className="h-full w-full custom-pagination"
                       >
                         {project.images.map((img, index) => (
                           <SwiperSlide key={index}>

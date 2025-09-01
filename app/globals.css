@@ -62,3 +62,7 @@
 html {
   scroll-behavior: smooth;
 }
+
+.custom-pagination .swiper-pagination-bullet-active {
+  @apply bg-orange-500 scale-125;
+}
