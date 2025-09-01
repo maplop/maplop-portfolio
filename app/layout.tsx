@@ -4,6 +4,11 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Manuel Prieto | Desarrollador Frontend',
   description: 'Portafolio de Manuel Prieto: desarrollador frontend especializado en React, Next.js y Tailwind CSS.',
+  icons: {
+    icon: [
+      { url: '/logo.png', sizes: '48x48', type: 'image/png' },
+    ],
+  },
   generator: 'v0.dev',
   authors: [{ name: 'Manuel Prieto', url: 'https://maplop-portfolio.vercel.app' }],
   keywords: [
