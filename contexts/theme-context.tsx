@@ -1,8 +1,6 @@
-"use client"
+'use client'
 
-import type React from "react"
-
-import { createContext, useContext, useEffect, useState } from "react"
+import React, { createContext, useContext, useEffect, useState } from "react"
 
 type Theme = "dark" | "light"
 
@@ -16,31 +14,33 @@ type ThemeProviderState = {
   setTheme: (theme: Theme) => void
 }
 
-const initialState: ThemeProviderState = {
-  theme: "light",
-  setTheme: () => null,
-}
+const ThemeProviderContext = createContext<ThemeProviderState | undefined>(undefined)
 
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
-
-export function ThemeProvider({ children, defaultTheme = "light", ...props }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme)
+export function ThemeProvider({ children, defaultTheme = "dark" }: ThemeProviderProps) {
+  const [theme, setThemeState] = useState<Theme>(defaultTheme)
 
   useEffect(() => {
-    const root = window.document.documentElement
-    root.classList.remove("light", "dark")
-    root.classList.add(theme)
-  }, [theme])
+    const storedTheme = localStorage.getItem("theme") as Theme | null
+    const initialTheme = storedTheme || defaultTheme
 
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      setTheme(theme)
-    },
+    const root = window.document.documentElement
+    root.classList.remove("dark", "light")
+    root.classList.add(initialTheme)
+
+    setThemeState(initialTheme)
+  }, [defaultTheme])
+
+  const setTheme = (newTheme: Theme) => {
+    const root = window.document.documentElement
+    root.classList.remove("dark", "light")
+    root.classList.add(newTheme)
+    localStorage.setItem("theme", newTheme)
+    setThemeState(newTheme)
   }
 
+  const value = { theme, setTheme }
   return (
-    <ThemeProviderContext.Provider {...props} value={value}>
+    <ThemeProviderContext.Provider value={value}>
       {children}
     </ThemeProviderContext.Provider>
   )
@@ -48,8 +48,6 @@ export function ThemeProvider({ children, defaultTheme = "light", ...props }: Th
 
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext)
-
-  if (context === undefined) throw new Error("useTheme must be used within a ThemeProvider")
-
+  if (!context) throw new Error("useTheme must be used within a ThemeProvider")
   return context
 }

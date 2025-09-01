@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 
 type Language = "es" | "en"
 
@@ -26,9 +26,24 @@ const LanguageProviderContext = createContext<LanguageProviderState>(initialStat
 export function LanguageProvider({ children, defaultLanguage = "es", ...props }: LanguageProviderProps) {
   const [language, setLanguage] = useState<Language>(defaultLanguage)
 
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("language") as Language | null
+    if (savedLanguage) {
+      setLanguage(savedLanguage)
+    } else {
+      setLanguage(defaultLanguage)
+    }
+
+  }, [defaultLanguage])
+
+  const handleSetLanguage = (language: Language) => {
+    setLanguage(language)
+    localStorage.setItem("language", language)
+  }
+
   const value = {
     language,
-    setLanguage,
+    setLanguage: handleSetLanguage,
   }
 
   return (

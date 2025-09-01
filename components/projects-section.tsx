@@ -164,17 +164,29 @@ export function ProjectsSection() {
                         ))}
                       </div>
                       <div className="flex gap-2">
-                        <Button disabled size="sm" className="flex-1 bg-orange-500 hover:bg-orange-600" asChild>
-                          <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
+                        {project.projectUrl ? (
+                          <Button size="sm" className="flex-1 bg-orange-500 hover:bg-orange-600" asChild>
+                            <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              {dict.projects.viewProject}
+                            </a>
+                          </Button>
+                        ) : (
+                          <Button size="sm" className="flex-1 bg-orange-500" disabled>
                             <ExternalLink className="w-4 h-4 mr-2" />
                             {dict.projects.viewProject}
-                          </a>
-                        </Button>
-                        {project.githubUrl && (
+                          </Button>
+                        )}
+
+                        {project.githubUrl ? (
                           <Button size="sm" variant="outline" asChild>
                             <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                               <Github className="w-4 h-4" />
                             </a>
+                          </Button>
+                        ) : (
+                          <Button size="sm" variant="outline" disabled>
+                            <Github className="w-4 h-4" />
                           </Button>
                         )}
                       </div>
