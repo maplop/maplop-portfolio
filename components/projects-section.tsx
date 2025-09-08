@@ -17,7 +17,6 @@ import { useEffect, useRef, useState } from "react"
 import { ProjectCategory } from "@/data/projects"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip"
 
-
 export function ProjectsSection() {
   const { language } = useLanguage()
   const dict = dictionaries[language]
@@ -26,6 +25,8 @@ export function ProjectsSection() {
   const nextRef = useRef<HTMLButtonElement | null>(null);
 
   const [isMobile, setIsMobile] = useState(false)
+
+  const [expandedProject, setExpandedProject] = useState<number | null>(null)
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,8 +37,6 @@ export function ProjectsSection() {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-
-
   const getCategoryIcon = (category: ProjectCategory) => {
     let IconComponent
     let label
@@ -47,17 +46,17 @@ export function ProjectsSection() {
       case "real":
         IconComponent = BriefcaseBusiness
         label = "Trabajo"
-        colorClass = "text-blue-500" // color para real
+        colorClass = "text-blue-500"
         break
       case "practice":
         IconComponent = Dumbbell
         label = "Práctica"
-        colorClass = "text-red-500" // color para práctica
+        colorClass = "text-red-500"
         break
       case "exam":
         IconComponent = FileJson2
         label = "Prueba técnica"
-        colorClass = "text-green-500" // color para examen
+        colorClass = "text-green-500"
         break
       default:
         return null
@@ -153,7 +152,15 @@ export function ProjectsSection() {
                         <CardTitle className="text-xl">{project.title[language]}</CardTitle>
                         {getCategoryIcon(project.category)}
                       </div>
-                      <CardDescription>{project.description[language]}</CardDescription>
+                      <CardDescription
+                        onClick={() =>
+                          setExpandedProject(expandedProject === index ? null : index)
+                        }
+                        className={`text-sm text-muted-foreground cursor-pointer ${expandedProject === index ? "" : "line-clamp-3"
+                          }`}
+                      >
+                        {project.description[language]}
+                      </CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="flex flex-wrap gap-2 mb-4">
@@ -198,7 +205,7 @@ export function ProjectsSection() {
           </Swiper>
           <button
             ref={prevRef}
-            className="absolute left-[-10px] sm:left-[-15px] top-1/2 translate-y-1/2 p-1 z-10 rounded-full transition
+            className="absolute left-[-10px] sm:left-[-15px] top-56 p-1 z-10 rounded-full transition
               bg-gray-200 text-black
     hover:bg-orange-500 hover:text-white 
              dark:bg-gray-800 dark:text-white dark:hover:bg-orange-500"
@@ -208,7 +215,7 @@ export function ProjectsSection() {
 
           <button
             ref={nextRef}
-            className="absolute right-[-10px] sm:right-[-15px] top-1/2 translate-y-1/2 p-1 z-10 rounded-full transition
+            className="absolute right-[-10px] sm:right-[-15px] top-56 p-1 z-10 rounded-full transition
              bg-gray-200 text-black 
     hover:bg-orange-500 hover:text-white 
             dark:bg-gray-800 dark:text-white dark:hover:bg-orange-500"
