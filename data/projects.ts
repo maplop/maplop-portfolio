@@ -245,4 +245,19 @@ export const projects: ProjectType[] = [
     technologies: ["Nextjs", "Material UI", "TypeScript"],
     githubUrl: "https://github.com/maplop/thirdweb-marketplace",
   },
+  {
+    title: {
+      es: "Portafolio",
+      en: "Portfolio",
+    },
+    description: {
+      es: "Aquí se muestran proyectos desarrollados con tecnologías modernas, donde combino diseño, funcionalidad y rendimiento para ofrecer aplicaciones web completas y profesionales.",
+      en: "This portfolio showcases projects developed with modern technologies, where I combine design, functionality, and performance to deliver complete and professional web applications.",
+    },
+    images: ["/projects/portfolio/portfolio-1.png"],
+    category: "practice",
+    technologies: ["Nextjs", "Tailwind CSS", "TypeScript"],
+    projectUrl: "https://maplop-portfolio.vercel.app",
+    githubUrl: "https://github.com/maplop/maplop-portfolio",
+  },
 ];
