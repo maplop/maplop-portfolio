@@ -98,7 +98,7 @@ export function AboutSection() {
                           <GraduationCap className="w-5 h-5 text-orange-500" />
                           <div>
                             <h4 className="font-semibold text-sm sm:text-base">
-                              {language === "es" ? "Ingenieria Informática" : "Computer Engineering"}
+                              {language === "es" ? "Ingeniería Informática" : "Computer Engineering"}
                             </h4>
                             <p className="text-muted-foreground text-sm">
                               {language === "es"
