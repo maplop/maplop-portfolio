@@ -16,6 +16,7 @@ import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { useEffect, useRef, useState } from "react"
 import { ProjectCategory } from "@/data/projects"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip"
+import Image from "next/image"
 
 export function ProjectsSection() {
   const { language } = useLanguage()
@@ -138,9 +139,11 @@ export function ProjectsSection() {
                       >
                         {project.images.map((img, index) => (
                           <SwiperSlide key={index}>
-                            <img
+                            <Image
                               src={img || "/img-placeholder.png"}
                               alt={`${project.title}-${index}`}
+                              width={800}
+                              height={450}
                               className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                             />
                           </SwiperSlide>
