@@ -7,14 +7,13 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { useLanguage } from "@/contexts/language-context"
 import { dictionaries } from "@/lib/dictionaries"
-import { projects } from "@/data/projects"
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Navigation, Autoplay, Pagination } from 'swiper/modules';
-import { useEffect, useRef, useState } from "react"
-import { ProjectCategory } from "@/data/projects"
+import { projects, ProjectCategory } from "@/data/projects"
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
+import { Navigation, Autoplay, Pagination } from "swiper/modules"
+import { useEffect, useState } from "react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip"
 import Image from "next/image"
 
@@ -22,11 +21,7 @@ export function ProjectsSection() {
   const { language } = useLanguage()
   const dict = dictionaries[language]
 
-  const prevRef = useRef<HTMLButtonElement | null>(null);
-  const nextRef = useRef<HTMLButtonElement | null>(null);
-
   const [isMobile, setIsMobile] = useState(false)
-
   const [expandedProject, setExpandedProject] = useState<number | null>(null)
 
   useEffect(() => {
@@ -75,7 +70,6 @@ export function ProjectsSection() {
     )
   }
 
-
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
@@ -86,8 +80,12 @@ export function ProjectsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">{dict.projects.title}</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{dict.projects.description}</p>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            {dict.projects.title}
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {dict.projects.description}
+          </p>
         </motion.div>
 
         <div className="relative">
@@ -111,14 +109,8 @@ export function ProjectsSection() {
               1024: { slidesPerView: 3 },
             }}
             navigation={{
-              prevEl: prevRef.current,
-              nextEl: nextRef.current,
-            }}
-            onBeforeInit={(swiper) => {
-              if (typeof swiper.params.navigation !== "boolean" && swiper.params.navigation) {
-                swiper.params.navigation.prevEl = prevRef.current;
-                swiper.params.navigation.nextEl = nextRef.current;
-              }
+              prevEl: ".swiper-button-prev-custom",
+              nextEl: ".swiper-button-next-custom",
             }}
           >
             {projects.map((project, index) => (
@@ -152,12 +144,16 @@ export function ProjectsSection() {
                     </div>
                     <CardHeader>
                       <div className="flex justify-between items-center">
-                        <CardTitle className="text-xl">{project.title[language]}</CardTitle>
+                        <CardTitle className="text-xl">
+                          {project.title[language]}
+                        </CardTitle>
                         {getCategoryIcon(project.category)}
                       </div>
                       <CardDescription
                         onClick={() =>
-                          setExpandedProject(expandedProject === index ? null : index)
+                          setExpandedProject(
+                            expandedProject === index ? null : index
+                          )
                         }
                         className={`text-sm text-muted-foreground cursor-pointer ${expandedProject === index ? "" : "line-clamp-3"
                           }`}
@@ -175,14 +171,26 @@ export function ProjectsSection() {
                       </div>
                       <div className="flex gap-2">
                         {project.projectUrl ? (
-                          <Button size="sm" className="flex-1 bg-orange-500 hover:bg-orange-600" asChild>
-                            <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
+                          <Button
+                            size="sm"
+                            className="flex-1 bg-orange-500 hover:bg-orange-600"
+                            asChild
+                          >
+                            <a
+                              href={project.projectUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <ExternalLink className="w-4 h-4 mr-2" />
                               {dict.projects.viewProject}
                             </a>
                           </Button>
                         ) : (
-                          <Button size="sm" className="flex-1 bg-orange-500" disabled>
+                          <Button
+                            size="sm"
+                            className="flex-1 bg-orange-500"
+                            disabled
+                          >
                             <ExternalLink className="w-4 h-4 mr-2" />
                             {dict.projects.viewProject}
                           </Button>
@@ -190,7 +198,11 @@ export function ProjectsSection() {
 
                         {project.githubUrl ? (
                           <Button size="sm" variant="outline" asChild>
-                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <Github className="w-4 h-4" />
                             </a>
                           </Button>
@@ -206,27 +218,27 @@ export function ProjectsSection() {
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {/* Botones personalizados */}
           <button
-            ref={prevRef}
-            className="absolute left-[-10px] sm:left-[-15px] top-56 p-1 z-10 rounded-full transition
+            className="swiper-button-prev-custom absolute left-[-10px] sm:left-[-15px] top-56 p-1 z-10 rounded-full transition
               bg-gray-200 text-black
-    hover:bg-orange-500 hover:text-white 
-             dark:bg-gray-800 dark:text-white dark:hover:bg-orange-500"
+              hover:bg-orange-500 hover:text-white 
+              dark:bg-gray-800 dark:text-white dark:hover:bg-orange-500"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
 
           <button
-            ref={nextRef}
-            className="absolute right-[-10px] sm:right-[-15px] top-56 p-1 z-10 rounded-full transition
-             bg-gray-200 text-black 
-    hover:bg-orange-500 hover:text-white 
-            dark:bg-gray-800 dark:text-white dark:hover:bg-orange-500"
+            className="swiper-button-next-custom absolute right-[-10px] sm:right-[-15px] top-56 p-1 z-10 rounded-full transition
+              bg-gray-200 text-black
+              hover:bg-orange-500 hover:text-white 
+              dark:bg-gray-800 dark:text-white dark:hover:bg-orange-500"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
         </div>
       </div>
-    </section >
+    </section>
   )
 }
