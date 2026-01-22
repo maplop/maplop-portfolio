@@ -12,8 +12,6 @@ export function HeroSection() {
   const { language } = useLanguage()
   const dict = dictionaries[language]
 
-  console.log("Lan --- ", language)
-
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
