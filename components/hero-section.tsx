@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/language-context"
 import { dictionaries } from "@/lib/dictionaries"
 import { SiWhatsapp, SiLinkedin, SiGithub } from "react-icons/si"
+import Image from "next/image"
 
 
 export function HeroSection() {
@@ -94,11 +95,16 @@ export function HeroSection() {
 
               {/* Main image container */}
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden bg-gradient-to-br from-orange-400 to-orange-500 p-1">
-                <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                  <img
-                    src="/profile.png" // Replace with your actual image path
+                <div className="w-full h-full rounded-full overflow-hidden bg-white relative">
+                  <Image
+                    src="/profile.png"
                     alt="Manuel Prieto - UI/UX Designer & Front-End Developer"
+                    width={384}
+                    height={384}
+                    priority
+                    fetchPriority="high"
                     className="w-full h-full object-cover"
+                    sizes="(max-width: 1024px) 320px, 384px"
                   />
                 </div>
               </div>

@@ -129,17 +129,24 @@ export function ProjectsSection() {
                         modules={[Pagination]}
                         className="h-full w-full custom-pagination"
                       >
-                        {project.images.map((img, index) => (
-                          <SwiperSlide key={index}>
-                            <Image
-                              src={img || "/img-placeholder.png"}
-                              alt={`${project.title}-${index}`}
-                              width={800}
-                              height={450}
-                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                            />
-                          </SwiperSlide>
-                        ))}
+                        {project.images.map((img, imgIndex) => {
+                          // Solo las primeras 3 proyectos visibles tienen priority en su primera imagen
+                          const isPriority = index < 3 && imgIndex === 0
+                          return (
+                            <SwiperSlide key={imgIndex}>
+                              <Image
+                                src={img || "/img-placeholder.png"}
+                                alt={`${project.title[language]}-${imgIndex + 1}`}
+                                width={800}
+                                height={450}
+                                priority={isPriority}
+                                loading={isPriority ? undefined : "lazy"}
+                                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              />
+                            </SwiperSlide>
+                          )
+                        })}
                       </Swiper>
                     </div>
                     <CardHeader>
