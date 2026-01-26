@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ExternalLink, Github, ChevronLeft, ChevronRight, Dumbbell, BriefcaseBusiness, FileJson2 } from "lucide-react"
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -14,12 +14,13 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 import { Navigation, Autoplay, Pagination } from "swiper/modules"
 import { useEffect, useState } from "react"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip"
 import Image from "next/image"
 
 export function ProjectsSection() {
   const { language } = useLanguage()
   const dict = dictionaries[language]
+
+
 
   const [isMobile, setIsMobile] = useState(false)
   const [expandedProject, setExpandedProject] = useState<number | null>(null)
@@ -33,40 +34,31 @@ export function ProjectsSection() {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
-  const getCategoryIcon = (category: ProjectCategory) => {
-    let IconComponent
+  const getCategoryBadge = (category: ProjectCategory) => {
     let label
-    let colorClass
+    let className
 
     switch (category) {
       case "real":
-        IconComponent = BriefcaseBusiness
-        label = "Trabajo"
-        colorClass = "text-blue-500"
+        label = language === "es" ? "Trabajo Real" : "Real Work"
+        className = "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20"
         break
       case "practice":
-        IconComponent = Dumbbell
-        label = "Práctica"
-        colorClass = "text-red-500"
+        label = language === "es" ? "Práctica" : "Practice"
+        className = "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20"
         break
       case "exam":
-        IconComponent = FileJson2
-        label = "Prueba técnica"
-        colorClass = "text-green-500"
+        label = language === "es" ? "Prueba Técnica" : "Technical Test"
+        className = "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20"
         break
       default:
         return null
     }
 
     return (
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <IconComponent className={`w-5 h-5 cursor-pointer ${colorClass}`} />
-          </TooltipTrigger>
-          <TooltipContent side="top">{label}</TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <Badge variant="outline" className={`${className} whitespace-nowrap shrink-0`}>
+        {label}
+      </Badge>
     )
   }
 
@@ -130,7 +122,6 @@ export function ProjectsSection() {
                         className="h-full w-full custom-pagination"
                       >
                         {project.images.map((img, imgIndex) => {
-                          // Solo las primeras 3 proyectos visibles tienen priority en su primera imagen
                           const isPriority = index < 3 && imgIndex === 0
                           return (
                             <SwiperSlide key={imgIndex}>
@@ -150,11 +141,11 @@ export function ProjectsSection() {
                       </Swiper>
                     </div>
                     <CardHeader>
-                      <div className="flex justify-between items-center">
+                      <div className="flex justify-between items-start gap-2">
                         <CardTitle className="text-xl">
                           {project.title[language]}
                         </CardTitle>
-                        {getCategoryIcon(project.category)}
+                        {getCategoryBadge(project.category)}
                       </div>
                       <CardDescription
                         onClick={() =>
@@ -176,48 +167,42 @@ export function ProjectsSection() {
                           </Badge>
                         ))}
                       </div>
-                      <div className="flex gap-2">
-                        {project.projectUrl ? (
-                          <Button
-                            size="sm"
-                            className="flex-1 bg-orange-500 hover:bg-orange-600"
-                            asChild
+                      <div className="flex justify-between items-center gap-2">
+                        <Button
+                          size="sm"
+                          className="w-full bg-orange-500 hover:bg-orange-600 flex items-center gap-2"
+                          asChild
+                          disabled={!project.projectUrl}
+                        >
+                          <a
+                            href={project.projectUrl || "#"}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={!project.projectUrl ? "pointer-events-none opacity-50" : ""}
                           >
-                            <a
-                              href={project.projectUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <ExternalLink className="w-4 h-4 mr-2" />
-                              {dict.projects.viewProject}
-                            </a>
-                          </Button>
-                        ) : (
-                          <Button
-                            size="sm"
-                            className="flex-1 bg-orange-500"
-                            disabled
-                          >
-                            <ExternalLink className="w-4 h-4 mr-2" />
+                            <ExternalLink className="w-4 h-4" />
                             {dict.projects.viewProject}
-                          </Button>
-                        )}
+                          </a>
+                        </Button>
 
-                        {project.githubUrl ? (
-                          <Button size="sm" variant="outline" asChild>
-                            <a
-                              href={project.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Github className="w-4 h-4" />
-                            </a>
-                          </Button>
-                        ) : (
-                          <Button size="sm" variant="outline" disabled>
-                            <Github className="w-4 h-4" />
-                          </Button>
-                        )}
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="w-full flex items-center gap-2"
+                          asChild
+                          disabled={!project.githubUrl}
+                        >
+                          <a
+                            href={project.githubUrl || "#"}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={!project.githubUrl ? "pointer-events-none opacity-30" : ""}
+                          >
+                            <Github className="w-4 h-4 inline-block" />
+                            GitHub
+                          </a>
+                        </Button>
+
                       </div>
                     </CardContent>
                   </Card>

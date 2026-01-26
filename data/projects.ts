@@ -38,7 +38,17 @@ export const projects: ProjectType[] = [
       "/projects/squarity/squarity-9.png",
     ],
     category: "real",
-    technologies: ["Next.js", "Material UI", "TypeScript"],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "React Query",
+      "Material UI",
+      "Thirdweb SDK",
+      "Wagmi",
+      "Ethers.js",
+      "RainbowKit",
+      "ECharts",
+    ],
     projectUrl: "https://www.squarity.app",
   },
   {
@@ -63,7 +73,15 @@ export const projects: ProjectType[] = [
       "/projects/innovacion-fiscal-mx/innovacion-fiscal-mx-10.png",
     ],
     category: "real",
-    technologies: ["React", "Material UI", "JavaScript"],
+    technologies: [
+      "React",
+      "JavaScript",
+      "Material UI",
+      "React Query",
+      "WebSockets",
+      "IndexedDB",
+    ],
+    projectUrl: "https://app.innovacionfiscalmx.com/",
   },
   {
     title: {
@@ -113,7 +131,14 @@ export const projects: ProjectType[] = [
       "/projects/telosians/telosians-6.png",
     ],
     category: "real",
-    technologies: ["Next.js", "Material UI", "TypeScript"],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Material UI",
+      "RainbowKit",
+      "wagmi",
+    ],
     projectUrl: "https://telosians.club",
   },
   {
@@ -132,7 +157,14 @@ export const projects: ProjectType[] = [
       "/projects/clay-slicer/clay-slicer-4.png",
     ],
     category: "real",
-    technologies: ["Electron", "React", "Material UI", "TypeScript"],
+    technologies: [
+      "Electron",
+      "React",
+      "TypeScript",
+      "Three.js",
+      "Material UI",
+      "Zustand",
+    ],
   },
   {
     title: {
@@ -149,7 +181,14 @@ export const projects: ProjectType[] = [
       "/projects/vector-to-gcode/vector-to-gcode-3.png",
     ],
     category: "real",
-    technologies: ["Electron", "React", "Material UI", "TypeScript"],
+    technologies: [
+      "Electron",
+      "React",
+      "TypeScript",
+      "Three.js",
+      "Material UI",
+      "Zustand",
+    ],
   },
   {
     title: {
@@ -213,7 +252,7 @@ export const projects: ProjectType[] = [
     ],
     category: "exam",
     technologies: ["React", "Material UI", "TypeScript"],
-    projectUrl: "https://nox-exam-voypati.vercel.app/dashboard",
+    projectUrl: "https://nox-exam-voypati.vercel.app/orders",
     githubUrl: "https://github.com/maplop/nox-exam",
   },
   {
