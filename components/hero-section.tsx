@@ -39,7 +39,7 @@ export function HeroSection() {
 
             {/* Action Buttons */}
             <div className="flex  gap-4 mb-8">
-              <a href={language === 'en' ? "/ENG-CV-Manuel-Prieto.pdf" : "/ESP-CV-Manuel-Prieto.pdf"} download>
+              <a href={language === 'en' ? "/CV-MANUEL-PRIETO-ING.pdf" : "/CV-MANUEL-PRIETO-ESP.pdf"} download>
                 <Button variant="outline" size="lg" className="gap-2">
                   <Download className="w-4 h-4" />
                   {dict.hero.downloadCV}
