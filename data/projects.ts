@@ -111,7 +111,7 @@ export const projects: ProjectType[] = [
     ],
     category: "real",
     technologies: ["Electron", "React", "TypeScript", "Tailwind CSS"],
-    githubUrl: "https://github.com/maplop/sigaced",
+    githubUrl: "https://github.com/maplop/gopced",
   },
   {
     title: {
@@ -165,6 +165,7 @@ export const projects: ProjectType[] = [
       "Material UI",
       "Zustand",
     ],
+    projectUrl: "https://readymag.website/u3556992767/GcodeTools/",
   },
   {
     title: {
@@ -189,6 +190,7 @@ export const projects: ProjectType[] = [
       "Material UI",
       "Zustand",
     ],
+    projectUrl: "https://readymag.website/u3556992767/GcodeTools/",
   },
   {
     title: {
