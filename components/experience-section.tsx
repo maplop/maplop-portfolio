@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { ExternalLink } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import { dictionaries } from "@/lib/dictionaries"
 
@@ -94,7 +95,14 @@ export function ExperienceSection() {
                             )}
                           </div>
                           <div>
-                            <h3 className="font-semibold text-lg">{job.company}</h3>
+                            {isDynamicore ? (
+                              <a href="https://dynamicore.io/en" target="_blank" rel="noopener noreferrer" className="font-semibold text-lg hover:text-blue-500 transition-colors inline-flex items-center gap-1">
+                                {job.company}
+                                <ExternalLink className="w-3.5 h-3.5" />
+                              </a>
+                            ) : (
+                              <h3 className="font-semibold text-lg">{job.company}</h3>
+                            )}
                             <Badge variant="secondary" className="mt-1">
                               {job.period}
                             </Badge>
@@ -102,7 +110,14 @@ export function ExperienceSection() {
                         </div>
 
                         <div className="hidden md:flex items-center justify-between mb-3">
-                          <h3 className="font-semibold text-lg">{job.company}</h3>
+                          {isDynamicore ? (
+                            <a href="https://dynamicore.io/en" target="_blank" rel="noopener noreferrer" className="font-semibold text-lg hover:text-blue-500 transition-colors inline-flex items-center gap-1">
+                              {job.company}
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          ) : (
+                            <h3 className="font-semibold text-lg">{job.company}</h3>
+                          )}
                           <Badge variant="secondary">{job.period}</Badge>
                         </div>
 
