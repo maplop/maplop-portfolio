@@ -56,9 +56,9 @@ export function Header() {
 
           {/* Theme and Language toggles */}
           <div className="hidden md:flex items-center space-x-2">
-            <Button variant="ghost" size="icon" onClick={toggleLanguage} className="w-9 h-9">
+            <Button variant="ghost" onClick={toggleLanguage} className="h-9 px-2 gap-1">
               <Globe className="h-4 w-4" />
-              <span className="sr-only">Toggle language</span>
+              <span className="text-xs font-semibold">{language.toUpperCase()}</span>
             </Button>
             <Button variant="ghost" size="icon" onClick={toggleTheme} className="w-9 h-9">
               {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
@@ -68,8 +68,9 @@ export function Header() {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            <Button variant="ghost" size="icon" onClick={toggleLanguage} className="w-9 h-9">
+            <Button variant="ghost" onClick={toggleLanguage} className="h-9 px-2 gap-1">
               <Globe className="h-4 w-4" />
+              <span className="text-xs font-semibold">{language.toUpperCase()}</span>
             </Button>
             <Button variant="ghost" size="icon" onClick={toggleTheme} className="w-9 h-9">
               {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
