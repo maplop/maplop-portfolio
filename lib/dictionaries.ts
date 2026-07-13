@@ -2,6 +2,7 @@ export const dictionaries = {
   es: {
     nav: {
       about: "Sobre mí",
+      experience: "Experiencia",
       skills: "Habilidades",
       projects: "Proyectos",
       contact: "Contacto",
@@ -24,6 +25,23 @@ A lo largo de mi trayectoria he trabajado con tecnologías como HTML, CSS, JavaS
       experience: "Años de experiencia",
       projects: "Proyectos completados",
       clients: "Clientes satisfechos",
+    },
+    experience: {
+      title: "Experiencia Laboral",
+      jobs: [
+        {
+          role: "Frontend Developer",
+          company: "Dynamicore",
+          period: "2026 - Actualidad",
+          description: "• Desarrollo de soluciones tecnológicas para el sector financiero, incluyendo flujos de onboarding y solicitud de crédito.\n• Creación de interfaces orientadas a simplificar procesos financieros complejos y mejorar la experiencia de usuario.\n• Colaboración en la modernización tecnológica del producto base y migración hacia tecnologías actuales.\n• Mantenimiento y evolución continua de la plataforma: resolución de incidencias, implementación de mejoras y ajustes funcionales.",
+        },
+        {
+          role: "Desarrollador Frontend Freelance",
+          company: "Freelancer",
+          period: "2022 - 2026",
+          description: "• Desarrollo de aplicaciones web y de escritorio para sectores como Web3, fintech y gestión empresarial.\n• Implementación de interfaces responsivas, integración de APIs, autenticación y gestión de estado con React, Next.js, TypeScript y Electron.\n• Funcionalidades en tiempo real y soluciones orientadas al rendimiento y la experiencia de usuario.\n• Colaboración remota con equipos y clientes, desde la planificación hasta la entrega del producto.",
+        },
+      ],
     },
     skills: {
       title: "Habilidades Técnicas",
@@ -70,12 +88,13 @@ A lo largo de mi trayectoria he trabajado con tecnologías como HTML, CSS, JavaS
     },
   },
   en: {
-    nav: {
-      about: "About Me",
-      skills: "Skills",
-      projects: "Projects",
-      contact: "Contact",
-    },
+      nav: {
+        about: "About Me",
+        experience: "Experience",
+        skills: "Skills",
+        projects: "Projects",
+        contact: "Contact",
+      },
     hero: {
       greeting: "Hi, I'm",
       title: "Frontend Developer",
@@ -95,7 +114,23 @@ Throughout my journey, I have worked with technologies such as HTML, CSS, JavaSc
       projects: "Completed Projects",
       clients: "Satisfied Clients",
     },
-
+    experience: {
+      title: "Work Experience",
+      jobs: [
+        {
+          role: "Frontend Developer",
+          company: "Dynamicore",
+          period: "2026 - Present",
+          description: "• Development of technological solutions for the financial sector, including onboarding and credit application flows.\n• Creation of interfaces designed to simplify complex financial processes and improve user experience.\n• Collaboration on the technological modernization of the core product and migration to modern technologies.\n• Continuous platform maintenance and evolution: issue resolution, feature improvements, and functional adjustments.",
+        },
+        {
+          role: "Freelance Frontend Developer",
+          company: "Freelancer",
+          period: "2022 - 2026",
+          description: "• Developed web and desktop applications for sectors including Web3, fintech, and business management.\n• Implemented responsive interfaces, API integration, authentication, and state management with React, Next.js, TypeScript, and Electron.\n• Built real-time features and performance-oriented solutions focused on user experience.\n• Collaborated remotely with teams and clients, from planning through to product delivery.",
+        },
+      ],
+    },
     skills: {
       title: "Technical Skills",
       description:

@@ -23,6 +23,7 @@ export function Header() {
 
   const navItems = [
     { href: "#about", label: dict.nav.about },
+    { href: "#experience", label: dict.nav.experience },
     { href: "#skills", label: dict.nav.skills },
     { href: "#projects", label: dict.nav.projects },
     { href: "#contact", label: dict.nav.contact },
